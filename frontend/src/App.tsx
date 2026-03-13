@@ -10,34 +10,39 @@ import { BookingConfirmationPage } from "./pages/BookingConfirmationPage";
 export default function App() {
   return (
     <Routes>
+      {/* Event Types: has its OWN topbar (title + search + New button) */}
       <Route
         path="/"
         element={
-          <DashboardLayout>
+          <DashboardLayout hideTopbar>
             <EventTypesPage />
           </DashboardLayout>
         }
       />
+
+      {/* Availability: has its OWN topbar (back, name, save) */}
       <Route
         path="/availability"
         element={
-          <DashboardLayout>
+          <DashboardLayout hideTopbar>
             <AvailabilityPage />
           </DashboardLayout>
         }
       />
+
+      {/* Bookings: has its OWN header + tabs bar */}
       <Route
         path="/bookings"
         element={
-          <DashboardLayout>
+          <DashboardLayout hideTopbar>
             <BookingsPage />
           </DashboardLayout>
         }
       />
+
       <Route path="/book/:slug" element={<PublicBookingPage />} />
       <Route path="/confirm" element={<BookingConfirmationPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
-
