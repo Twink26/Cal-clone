@@ -1,14 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { PrismaClient } = require("@prisma/client");
 const { addMinutes, isBefore } = require("date-fns");
 const { utcToZonedTime, zonedTimeToUtc } = require("date-fns-tz");
+const { prisma } = require("./db");
 
 dotenv.config();
 
 const app = express();
-const prisma = new PrismaClient();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
